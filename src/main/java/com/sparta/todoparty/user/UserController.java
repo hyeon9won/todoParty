@@ -26,7 +26,7 @@ public class UserController {
         try {
             userService.signup(userRequestDto);
         } catch (IllegalArgumentException exception) {
-            return ResponseEntity.badRequest().body(new CommonResponseDto("중복된 사용자명입니다.", HttpStatus.BAD_REQUEST.value()));
+            return ResponseEntity.badRequest().body(new CommonResponseDto("중복된 username입니다.", HttpStatus.BAD_REQUEST.value()));
         }
         return ResponseEntity.status(HttpStatus.CREATED.value())
                 .body(new CommonResponseDto("회원가입 성공", HttpStatus.CREATED.value()));
