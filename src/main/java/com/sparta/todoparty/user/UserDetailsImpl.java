@@ -1,6 +1,6 @@
 package com.sparta.todoparty.user;
 
-import com.sparta.todoparty.user.User;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,8 +8,13 @@ import java.util.Collection;
 
 public class UserDetailsImpl implements UserDetails {
 
+    @Getter
+    private final User user;
+
     public UserDetailsImpl(User user) {
+        this.user = user;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -17,12 +22,12 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return user.getUsername();
     }
 
     @Override

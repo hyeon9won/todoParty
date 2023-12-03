@@ -1,9 +1,12 @@
 package com.sparta.todoparty.user;
 
+import com.sparta.todoparty.todo.Todo;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+
+import java.util.List;
 
 @Getter
 @Entity

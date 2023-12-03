@@ -45,7 +45,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 String username = info.getSubject();
                 SecurityContext context = SecurityContextHolder.createEmptyContext();
                 UserDetails userDetails = userDetailsService.getUserDetails(username);
-                Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null);
+                Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 context.setAuthentication(authentication);
                 SecurityContextHolder.setContext(context);
 
@@ -54,11 +54,12 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 // -> @AuthenticationPrincipal로 조회할 수 있게 됨
 
             } else {
-                // 인즈엉보가 존재하지 않을 때 처리
+                // 인증정가 존재하지 않을 때 처리
                 CommonResponseDto commonResponseDto = new CommonResponseDto("토큰이 유효하지 않습니다.", HttpStatus.BAD_REQUEST.value());
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 response.setContentType("application/json; charset=UTF=8");
                 response.getWriter().write(objectMapper.writeValueAsString(commonResponseDto));
+                return;
             }
         }
 
