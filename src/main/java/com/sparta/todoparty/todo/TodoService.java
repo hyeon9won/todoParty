@@ -3,6 +3,7 @@ package com.sparta.todoparty.todo;
 import com.sparta.todoparty.user.User;
 import com.sparta.todoparty.user.UserDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -30,7 +31,7 @@ public class TodoService {
     public Map<UserDto, List<TodoResponseDto>> getUserTodoMap() {
         Map<UserDto, List<TodoResponseDto>> userTodoMap = new HashMap<>();
 
-        List<Todo> todoList = todoRepository.findAll();
+        List<Todo> todoList = todoRepository.findAll(Sort.by(Sort.Direction.DESC, "createDate"));
 
         todoList.forEach(todo -> {
             var userDto = new UserDto(todo.getUser());

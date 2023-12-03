@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -38,10 +39,15 @@ public class TodoController {
         }
     }
 
+    // 목록 조회
     @GetMapping
-    public ResponseEntity<Map<UserDto, List<TodoResponseDto>>> getTodoList() {
-        Map<UserDto, List<TodoResponseDto>> responseDtoList = todoService.getUserTodoMap();
+    public ResponseEntity<List<TodoListResponseDto>> getTodoList() {
+    List<TodoListResponseDto> response = new ArrayList<>();
 
-        return ResponseEntity.ok().body(responseDtoList);
+    Map<UserDto, List<TodoResponseDto>> responseDtoMap = todoService.getUserTodoMap();
+
+    responseDtoMap.forEach((key, value) -> response.add(new TodoListResponseDto(key, value)));
+
+    return ResponseEntity.ok().body(response);
     }
 }
