@@ -61,4 +61,18 @@ public class TodoService {
 
         return new TodoResponseDto(todo);
     }
+
+    @Transactional
+    public TodoResponseDto completeTodo(Long todoId, User user) {
+        Todo todo = todoRepository.findById(todoId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 할 일 ID입니다."));
+
+        if (user.getId() != todo.getUser().getId()) {
+            throw new RejectedExecutionException("작성자만 수정할 수 있습니다.");
+
+        }
+        todo.complete(); // 완료 처리
+
+        return new TodoResponseDto(todo);
+    }
 }
