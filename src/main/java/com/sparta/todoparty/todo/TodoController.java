@@ -1,12 +1,17 @@
 package com.sparta.todoparty.todo;
 
 import com.sparta.todoparty.CommonResponseDto;
+import com.sparta.todoparty.user.User;
 import com.sparta.todoparty.user.UserDetailsImpl;
+import com.sparta.todoparty.user.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/api/todos")
 @RestController
@@ -34,8 +39,9 @@ public class TodoController {
     }
 
     @GetMapping
-    public ResponseEntity<CommonResponseDto> getTodoList() {
+    public ResponseEntity<Map<UserDto, List<TodoResponseDto>>> getTodoList() {
+        Map<UserDto, List<TodoResponseDto>> responseDtoList = todoService.getUserTodoMap();
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(responseDtoList);
     }
 }
