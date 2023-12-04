@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TodoTest {
 
     @Test
-    public void setUserTest() {
+    public void userTest() {
 
         // given
         Todo todo = new Todo();
@@ -24,7 +24,7 @@ class TodoTest {
     }
 
     @Test
-    public void setTitleTest() {
+    public void titleTest() {
 
         // G
         Todo todo = new Todo();
@@ -38,7 +38,7 @@ class TodoTest {
     }
 
     @Test
-    public void setContetnTest() {
+    public void contentTest() {
 
         // G
         Todo todo = new Todo();

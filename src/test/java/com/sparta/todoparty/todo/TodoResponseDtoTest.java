@@ -10,7 +10,7 @@ class TodoResponseDtoTest {
 
     // 유효성 검사
     @Test
-    public void Test() {
+    public void todoResponseDtoTest() {
         // Given
         Todo todo = new Todo();
         todo.setTitle("제목 테스트");

@@ -8,7 +8,7 @@ class UserTest {
 
     // Id 값이 제대로 부여되는지 확인
     @Test
-    public void getIdTest() {
+    public void idTest() {
 
         // Given
         User user = new User("Jacop", "abcd1234");
