@@ -11,7 +11,7 @@ class UserTest {
     public void idTest() {
 
         // Given
-        User user = new User("Jacop", "abcd1234");
+        User user = new User("testuser", "abcd1234");
 
         // When
         Long userId = user.getId();
