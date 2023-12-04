@@ -46,7 +46,7 @@ public class JwtUtil {
         return null;
     }
 
-    public boolean ValidateToken(String token) {
+    public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
@@ -79,4 +79,5 @@ public class JwtUtil {
                         .signWith(key, signatureAlgorithm)
                         .compact();
     }
+
 }
