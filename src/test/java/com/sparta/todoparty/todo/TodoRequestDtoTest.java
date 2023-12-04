@@ -8,7 +8,7 @@ class TodoRequestDtoTest {
 
     // 유효성 검사
     @Test
-    public void noneTitleTest() {
+    public void Test() {
         // Given
         TodoRequestDto todoRequestDto = new TodoRequestDto();
         todoRequestDto.setTitle("제목 테스트");
